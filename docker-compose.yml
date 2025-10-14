@@ -14,22 +14,21 @@ services:
     ports:
       - "127.0.0.1:5432:5432"
     networks:
-      - mc_network
+      - mcp_network
 
   mcp-server:
     build: .
     container_name: company_mcp_server
     environment:
-      - DB_HOST: localhost
-      - DB_PORT: 5432
-      - DB_USER: test
-      - DB_PASSWORD: test
-      - DB_DATABASE: test_db
+      DB_HOST: localhost
+      DB_PORT: 5432
+      DB_USER: test
+      DB_PASSWORD: test
+      DB_DATABASE: test_db
     ports:
       - "3000:3000"
     depends_on:
-      postgres:
-        - postgres
+      - postgres
     networks:
       - mcp_network
 
